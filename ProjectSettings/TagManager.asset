@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Destroy
+  - Mob
   layers:
   - Default
   - TransparentFX
