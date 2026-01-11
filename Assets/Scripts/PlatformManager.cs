@@ -6,7 +6,6 @@ public class PlatformManager : MonoBehaviour
     [SerializeField] private float speed = 1f;
     public Transform[] obtacleSpawnPoint;
     public GameObject[] obtaclePrefab;
-    private List<GameObject> activeObstacles = new List<GameObject>();
     // Update is called once per frame
     void Start()
     {
@@ -25,25 +24,33 @@ public class PlatformManager : MonoBehaviour
     }
     void SpawnObstacle()
     {
-        // KIỂM TRA: Nếu đã có đủ 2 vật thể thì không sinh thêm nữa
-        if (activeObstacles.Count >= 2)
+        int numberOfObstacles = Random.Range(1, 4);
+        Debug.Log("Spawning " + numberOfObstacles + " obstacles.");
+
+        List<int> availableIndices = new List<int>();
+        for (int i = 0; i < obtacleSpawnPoint.Length - 1; i++)
         {
-            Debug.Log("Đã đạt giới hạn 2 vật thể!");
-            return; 
+            availableIndices.Add(i);
         }
 
-        int randomIndex = Random.Range(0, obtacleSpawnPoint.Length);
-        int randomObstcale = Random.Range(0, obtaclePrefab.Length);
+        for (int i = 0; i < numberOfObstacles; i++)
+        {
+            if (availableIndices.Count == 0) break;
 
-        GameObject obstacle = Instantiate(
-            obtaclePrefab[randomObstcale], 
-            obtacleSpawnPoint[randomIndex].position, 
-            obtaclePrefab[randomObstcale].transform.rotation
-        );
+            int randomIndexInList = Random.Range(0, availableIndices.Count);
+            int spawnPointIndex = availableIndices[randomIndexInList];
 
-        obstacle.transform.SetParent(gameObject.transform);
+            int randomObstacleIndex = Random.Range(0, obtaclePrefab.Length);
 
-        // THÊM VÀO DANH SÁCH để quản lý
-        activeObstacles.Add(obstacle);
+            GameObject obstacle = Instantiate(
+                obtaclePrefab[randomObstacleIndex], 
+                obtacleSpawnPoint[spawnPointIndex].position, 
+                obtaclePrefab[randomObstacleIndex].transform.rotation
+            );
+
+            obstacle.transform.SetParent(gameObject.transform);
+
+            availableIndices.RemoveAt(randomIndexInList);
+        }
     }
 }

@@ -6,10 +6,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 startPos;
     private Vector3 targetPos;
     private float targetedLane = 1;
+    public GameManager gameManager;
     [Header("Cài đặt di chuyển")]
     public float swipeThreshold = 10f; // Độ dài tối thiểu của cú vuốt
     public float laneDistance = 0.2f;        // Khoảng cách mỗi lần di chuyển
     public float speed = 20f;          // Tốc độ trượt
+    public AudioSource audioSource;
     
     void Start()
     {
@@ -64,6 +66,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Mob"))
         {
+            gameManager.IncreaseScore(1);
+            audioSource.Play();
             Destroy(other.gameObject);
         }
     }

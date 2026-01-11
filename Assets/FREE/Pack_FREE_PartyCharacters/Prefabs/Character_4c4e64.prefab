@@ -906,7 +906,7 @@ GameObject:
   - component: {fileID: 7549557142012886643}
   - component: {fileID: 1682880490725336365}
   - component: {fileID: 4935774715676465714}
-  - component: {fileID: 4182958309433800458}
+  - component: {fileID: 6257909781163795329}
   - component: {fileID: 3419992466766188369}
   m_Layer: 0
   m_Name: Character_4c4e64
@@ -966,9 +966,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4009dfcc99bf304f9198bfabf1cab2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  gameManager: {fileID: 0}
   swipeThreshold: 10
   laneDistance: 0.2
   speed: 20
+  audioSource: {fileID: 3419992466766188369}
 --- !u!54 &4935774715676465714
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -996,8 +998,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &4182958309433800458
-CapsuleCollider:
+--- !u!65 &6257909781163795329
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1014,11 +1016,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.9203506
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.5341809, z: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.9526787, z: 1}
+  m_Center: {x: 0, y: 1.4903376, z: 0}
 --- !u!82 &3419992466766188369
 AudioSource:
   m_ObjectHideFlags: 0

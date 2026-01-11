@@ -7,7 +7,7 @@ public class SpawnNextPlatform : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Instantiate(platformPrefab, new Vector3(0, 0.14f, 6), Quaternion.identity);
+            Instantiate(platformPrefab, new Vector3(0, 0.14f, 2.2f), Quaternion.identity);
         }
     }
 }
