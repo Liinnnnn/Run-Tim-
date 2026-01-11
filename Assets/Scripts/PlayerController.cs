@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetPos;
     private float targetedLane = 1;
     public GameManager gameManager;
+    private Animator animator;
     [Header("Cài đặt di chuyển")]
     public float swipeThreshold = 10f; // Độ dài tối thiểu của cú vuốt
     public float laneDistance = 0.2f;        // Khoảng cách mỗi lần di chuyển
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         targetPos = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -69,6 +71,14 @@ public class PlayerController : MonoBehaviour
             gameManager.IncreaseScore(1);
             audioSource.Play();
             Destroy(other.gameObject);
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Obstacles"))
+        {
+            animator.SetBool("fall",true);
+            gameManager.LostGame();
         }
     }
 }

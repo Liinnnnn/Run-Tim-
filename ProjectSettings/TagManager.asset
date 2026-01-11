@@ -7,6 +7,7 @@ TagManager:
   - Platform
   - Destroy
   - Mob
+  - Obstacles
   layers:
   - Default
   - TransparentFX

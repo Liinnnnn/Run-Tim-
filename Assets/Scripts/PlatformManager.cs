@@ -10,6 +10,7 @@ public class PlatformManager : MonoBehaviour
     void Start()
     {
         SpawnObstacle();
+        GameManager.onGameLost += lostGame;
     }
     void Update()
     {
@@ -53,4 +54,8 @@ public class PlatformManager : MonoBehaviour
             availableIndices.RemoveAt(randomIndexInList);
         }
     }
+    private void lostGame()
+    {
+        speed = 0;
+    }   
 }
