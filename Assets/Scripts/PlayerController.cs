@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
         // 3. Di chuyển mượt mà đến làn đường đó (chỉ di chuyển trục X)
         transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * speed);
+        
     }
 
     void HandleSwipe(Vector2 start, Vector2 end)
